@@ -47,3 +47,13 @@ This can be found in [parseTweets](./src/lib/parseTweets.js)
 1. This method takes in an array of strings
 2. It uses the [array.reduce() method](https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80) to group tweets by user
 3. The logic within the reduce callback expects each string to be delimited by the gt and space characters (`> `), and expects only two strings on either side. Should this check fail, an error is thrown.
+
+##### parseUsers
+This can be found in [parseUsers](./src/lib/parseUsers.js)
+
+1. This method takes in an array of strings
+2. It uses the [array.reduce() method](https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80) to group a list user followees by user
+3. The logic within the reduce callback expects each string to be delimited by the ` follows ` string, and expects only two strings on either side. Should this check fail, an error is thrown.
+4. In addition, the right side of the ` follows ` string is expected to be a string of users delimited by a comma and space (`, `). This is split into an array of strings representing users.
+5. A `union` method is attached to Array.prototype array, from which other arrays can inherit from. The union method loops over each element in the array, and within each iteration, loops over the array again from the position of (the parent loop + 1) to check for duplicates...which it then removes. Checking from the position after the parents' reduces complexity; but having such a method within the reduce method could be costly for files with a large magnitude lines and a high follower count.
+6. The `union` method is used to get all the unique users in the user list, and to prevent duplication of followees in the followees array

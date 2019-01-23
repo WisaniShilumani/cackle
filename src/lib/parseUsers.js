@@ -6,7 +6,7 @@
 Array.prototype.union = function () {
   const a = this.concat()
   for (let i = 0; i < a.length; i++) {
-    for (let j = i+1; j < a.length; j++) {
+    for (let j = i + 1; j < a.length; j++) {
       if (a[i] === a[j]) {
         a.splice(j--, 1)
       }
@@ -42,7 +42,7 @@ exports.parseUsers = (userList) => {
     const follower = relationArray[0]
     const followees = relationArray[1].split(', ')
     const currentFollowees = accumulator[follower] || []
-    accumulator[follower] = [ ...currentFollowees, ...followees ].union() // Large O complexity
+    accumulator[follower] = [ ...currentFollowees, ...followees ].union()
     return accumulator
   }, initialUsers)
 }
