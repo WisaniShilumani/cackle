@@ -1,0 +1,20 @@
+{
+  "name": "cackle",
+  "version": "1.0.0",
+  "description": "A twitter like feed",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node src"
+  },
+  "keywords": [
+    "twitter",
+    "feed",
+    "tweet"
+  ],
+  "author": "Wisani Shilumani <wshilumani@gmail.com> (http://twitter.com/wisanishilumani)",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
