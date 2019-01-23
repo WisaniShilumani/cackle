@@ -34,9 +34,16 @@ The second file contains a list of tweets by users. These lines are delimited by
 
 #### Functions
 ##### Lines to array
-This can be found in `/src/lib/linesToArray.js`
+This can be found in [linesToArray](./src/lib/linesToArray.js)
 
 1. A readStream of a general file of interest is created using Node's `fs` (file system) package (line 34)
 2. The promise returning function `convertLinesFromFileToArray` is invoked. It begins by initializing an empty array and an empty string
 3. Three listeners are bound on the inputStream returned from the `fs` package. `on('data'...)`, `on('end'...)` and `on('error'...)`. On end resolves the promise, on error rejects the promise, and on data reads the stream and pushes the lines into the previously initialized array.
 4. On end, the promise resolves with the array of lines
+
+##### parseTweets
+This can be found in [parseTweets](./src/lib/parseTweets.js)
+
+1. This method takes in an array of strings
+2. It uses the [array.reduce() method](https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80) to group tweets by user
+3. The logic within the reduce callback expects each string to be delimited by the gt and space characters (`> `), and expects only two strings on either side. Should this check fail, an error is thrown.
