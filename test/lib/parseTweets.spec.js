@@ -30,5 +30,15 @@ describe('parsed tweet object', () => {
       expect(e).toContain('Tweets file contains a badly formatted line at')
     }
   })
+
+  it('should throw an error if a tweet is too long', async () => {
+    const badTweetLines = await linesToArray(__dirname + '/mocks/tweets-too-long.txt')
+    try {
+      const badTweets = parseTweets(badTweetLines)
+      expect(true).toBe(false)
+    } catch (e) {
+      expect(e).toContain('exceeds the 140 character limit')
+    }
+  })
 })
 

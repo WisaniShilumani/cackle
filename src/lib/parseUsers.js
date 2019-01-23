@@ -1,8 +1,3 @@
-/**
- * We want to return something that looks like this
- * { Ward: Alan, }
- * 
- *  */
 Array.prototype.union = function () {
   const a = this.concat()
   for (let i = 0; i < a.length; i++) {

@@ -8,6 +8,10 @@ exports.parseTweets = (tweetList) => {
 
     const user = tweetArray[0]
     const tweet = tweetArray[1]
+
+    if (tweet.length > 140) {
+      throw `The tweet at (line: ${index + 1}) exceeds the 140 character limit. "${tweet.substr(0, 10)}..."`
+    }
     accumulator[user] = accumulator[user] || []
     accumulator[user].push({
       index,

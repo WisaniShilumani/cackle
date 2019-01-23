@@ -47,6 +47,7 @@ This can be found in [parseTweets](./src/lib/parseTweets.js)
 1. This method takes in an array of strings
 2. It uses the [array.reduce() method](https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80) to group tweets by user
 3. The logic within the reduce callback expects each string to be delimited by the gt and space characters (`> `), and expects only two strings on either side. Should this check fail, an error is thrown.
+4. Furthermore, if a tweet exceeds the 140 character limit, an error is thrown.
 
 ##### parseUsers
 This can be found in [parseUsers](./src/lib/parseUsers.js)
@@ -64,3 +65,8 @@ This can be found in This can be found in [generateFeed](./src/lib/generateFeed.
 1. This method takes in two objects - namely a users object and a tweets object
 2. It uses the [array.reduce() method](https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80) method to iterate over the users list (obtained by evaluating the keys in the users object), fetching the current users' followee list, fetching each of their tweets, and ordering them by their initial position (determined by an index property in the tweets object).
 3. The feed object is populated per user and an accumulated object is returned with a feed for all users.
+
+#### Result
+Runing `npm run start` runs the `processTweets` method in [src/index](./src/index.js). This method parses the text files, creating arrays, which are then reduced to objects that can be later aggregated into a single object representing the user feeds.
+
+This object is finally logged in a desirable way using the `logTweets` method in [src/index](./src/index.js). The first operation of this method is to sort the usernames alphabetically. It then iterates over the aggregated object, logging out the user name, followed by their tabbed out tweets, if any exist.

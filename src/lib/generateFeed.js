@@ -8,7 +8,7 @@ exports.generateFeed = (users, tweets) => {
       userFeed = userFeed.concat(tweets[followee] || [])
     })
 
-    accumulator[userName] = userFeed.sort((a, b) => b.index - a.index).map(tweet => `@${tweet.user}: ${tweet.tweet}`)
+    accumulator[userName] = userFeed.sort((a, b) => a.index - b.index).map(tweet => `@${tweet.user}: ${tweet.tweet}`)
     return accumulator
   }, {})
 
