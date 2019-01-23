@@ -14,7 +14,7 @@ A twitter-like feed
 - Run `npm run start`
 
 ### Testing
-Jest is used as a test suite
+Jest is used as a testing framework
 - Run `npm run test` to ensure all tests pass
 
 ## Documentation
@@ -57,3 +57,10 @@ This can be found in [parseUsers](./src/lib/parseUsers.js)
 4. In addition, the right side of the ` follows ` string is expected to be a string of users delimited by a comma and space (`, `). This is split into an array of strings representing users.
 5. A `union` method is attached to Array.prototype array, from which other arrays can inherit from. The union method loops over each element in the array, and within each iteration, loops over the array again from the position of (the parent loop + 1) to check for duplicates...which it then removes. Checking from the position after the parents' reduces complexity; but having such a method within the reduce method could be costly for files with a large magnitude lines and a high follower count.
 6. The `union` method is used to get all the unique users in the user list, and to prevent duplication of followees in the followees array
+
+##### generateFeed
+This can be found in This can be found in [generateFeed](./src/lib/generateFeed.js)
+
+1. This method takes in two objects - namely a users object and a tweets object
+2. It uses the [array.reduce() method](https://medium.com/nona-web/understanding-javascript-reduce-and-its-use-cases-49a89d3aaa80) method to iterate over the users list (obtained by evaluating the keys in the users object), fetching the current users' followee list, fetching each of their tweets, and ordering them by their initial position (determined by an index property in the tweets object).
+3. The feed object is populated per user and an accumulated object is returned with a feed for all users.
