@@ -1,11 +1,11 @@
 const fs = require('fs')
 
-const convertLinesFromFileToArray = (input) => {
+const convertLinesFromFileToArray = (inputStream) => {
   const lines = []
   let remaining = ''
 
   return new Promise((resolve, reject) => {
-    input.on('data', data => {
+    inputStream.on('data', data => {
       remaining += data
       let index = remaining.indexOf('\n')
   
@@ -20,17 +20,17 @@ const convertLinesFromFileToArray = (input) => {
       }
     })
   
-    input.on('end', () => {
+    inputStream.on('end', () => {
       resolve(lines)
     })
 
-    input.on('error', error => {
+    inputStream.on('error', error => {
       reject(error)
     })
   })
 }
 
 exports.linesToArray = path => {
-  const input = fs.createReadStream(path)
-  return convertLinesFromFileToArray(input)
+  const inputStream = fs.createReadStream(path)
+  return convertLinesFromFileToArray(inputStream)
 }
