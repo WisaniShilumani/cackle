@@ -19,6 +19,8 @@
     "jest": "^23.6.0"
   },
   "husky": {
-    "pre-commit": "npm run test"
+    "hooks": {
+      "pre-commit": "npm run test"
+    }
   }
 }
