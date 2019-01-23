@@ -18,8 +18,13 @@ Array.prototype.union = function () {
 
 getAllUsers = (userList) => {
   let users = []
-  userList.forEach(line => {
+  userList.forEach((line, index) => {
     const relationArray = line.split(' follows ')
+
+    if (relationArray.length !== 2) {
+      throw `User list contains a badly formatted line at (line: ${index + 1}) "${line}"`
+    }
+
     users = users.concat([relationArray[0]].concat(relationArray[1].split(', ')))
   })
 
@@ -32,7 +37,7 @@ exports.parseUsers = (userList) => {
     return accumulator
   }, {})
 
-  return userList.reduce((accumulator, currentLine) => {
+  return userList.reduce((accumulator, currentLine, index) => {
     const relationArray = currentLine.split(' follows ')
     const follower = relationArray[0]
     const followees = relationArray[1].split(', ')

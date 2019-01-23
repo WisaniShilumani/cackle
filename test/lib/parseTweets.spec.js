@@ -20,5 +20,15 @@ describe('parsed tweet object', () => {
     expect(tweets[key1][0]).toHaveProperty('tweet')
     expect(tweets[key1][0]).toHaveProperty('user')
   })
+
+  it('should throw an error if a corrupted file is given', async () => {
+    const badTweetLines = await linesToArray(__dirname + '/mocks/tweets-corrupted.txt')
+    try {
+      const badTweets = parseTweets(badTweetLines)
+      expect(true).toBe(false)
+    } catch (e) {
+      expect(e).toContain('Tweets file contains a badly formatted line at')
+    }
+  })
 })
 

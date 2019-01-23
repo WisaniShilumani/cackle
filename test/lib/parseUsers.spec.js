@@ -18,5 +18,15 @@ describe('parsed user object', () => {
     expect(Array.isArray(users[username1])).toBeTruthy()
     expect(typeof users[username1][0]).toEqual('string')
   })
+
+  it('should throw an error if a corrupted file is given', async () => {
+    const badUserLines = await linesToArray(__dirname + '/mocks/users-corrupted.txt')
+    try {
+      const badUsers = parseUsers(badUserLines)
+      expect(true).toBe(false)
+    } catch (e) {
+      expect(e).toContain('User list contains a badly formatted line at')
+    }
+  })
 })
 

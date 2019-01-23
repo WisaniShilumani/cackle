@@ -1,0 +1,3 @@
+User1 follows User2
+User2 follow User3
+User1 follows User3, User2
