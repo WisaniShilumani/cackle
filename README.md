@@ -67,6 +67,6 @@ This can be found in This can be found in [generateFeed](./src/lib/generateFeed.
 3. The feed object is populated per user and an accumulated object is returned with a feed for all users.
 
 #### Result
-Runing `npm run start` runs the `processTweets` method in [src/index](./src/index.js). This method parses the text files, creating arrays, which are then reduced to objects that can be later aggregated into a single object representing the user feeds.
+Runing `npm run start` runs the `processTweets` method in [src/lib/index.js](./src/lib/index.js). This method parses the text files, creating arrays, which are then reduced to objects that can be later aggregated into a single object representing the user feeds.
 
-This object is finally logged in a desirable way using the `logTweets` method in [src/index](./src/index.js). The first operation of this method is to sort the usernames alphabetically. It then iterates over the aggregated object, logging out the user name, followed by their tabbed out tweets, if any exist.
+This object is finally logged in a desirable way using the [logTweets method](./src/lib/logTweets.js). The first operation of this method is to sort the usernames alphabetically. It then iterates over the aggregated object, logging out the user name, followed by their tabbed out tweets, if any exist.
