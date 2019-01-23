@@ -1,11 +1,6 @@
 const fs = require('fs')
 
-exports.linesToArray = path => {
-  const input = fs.createReadStream(path)
-  return readLinesFromFile(input)
-}
-
-const readLinesFromFile = (input) => {
+const convertLinesFromFileToArray = (input) => {
   const lines = []
   let remaining = ''
 
@@ -33,5 +28,9 @@ const readLinesFromFile = (input) => {
       reject(error)
     })
   })
-  
+}
+
+exports.linesToArray = path => {
+  const input = fs.createReadStream(path)
+  return convertLinesFromFileToArray(input)
 }
