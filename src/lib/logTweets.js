@@ -4,7 +4,7 @@ exports.logTweets = userFeeds => {
     const tweets = userFeeds[user].join('\n\t')
     console.log(`${user}`)
     if (tweets) {
-      console.log(`\n\t${tweets}`)
+      console.log(`\t${tweets}`)
     }
   })
 }
